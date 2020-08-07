@@ -13,29 +13,46 @@
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <title>Weather Dashboard</title>
 </head>
-<body> <!--weather dashboard navbar-->
-    <nav class="navbar navbar-dark bg-dark justify-content-center">
-        <span class="navbar-brand mb-0 "><h2>Weather Dashboard</h2></span>
-      </nav>
 
-<div class="container-fluid">
+<body>
+  <!--weather dashboard navbar-->
+  <nav class="navbar navbar-dark bg-dark justify-content-center">
+    <span class="navbar-brand mb-0 ">
+      <h2>Weather Dashboard</h2>
+    </span>
+  </nav>
 
-    <aside class= "row">
-        <div class="col-3 bg-light">
-          <p class="city-search m-2"> Search for a city</p>
-          <div class="input-group mb-4">
-            <input type="text" class="form-control" placeholder = "Enter City Name" aria-label="Enter City Name">
-            <div class="input-group-append">
-              <button class="btn btn-primary" type="button" id="search-button">
-                <i class="fas fa-search"></i>
+  <div class="container-fluid">
+
+    <aside class="row">
+      <div class="col-3 bg-light">
+        <p class="city-search m-2"> Search for a city</p>
+        <div class="input-group mb-4">
+          <input type="text" id="city-name" class="form-control" placeholder="Enter city name"
+            aria-label="Enter City Name">
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button" id="search-button">
+              <i class="fas fa-search"></i>
             </button>
-            </div>
+            <form id="citylist"></form>
           </div>
-
+        </div>
     </aside>
 
-    
-</div>
+    <main class="today-weather col-9 pt-3">
+      <div class="bg-light p-3">
+        <h2 class="justify-content-center text-light" id="current-city-name"></h2>
+        <div class="row">
+          <div class="col-6">
+            <p id="today-temp"></p>
+            <p id="today-humidity"></p>
+            <p id="today-wind-speed"></p>
+            <p id="uvindex"></p>
+            <img id="today-icon-div" src="">
+          </div>
+        </div>
+      </div>
+    </main>
 
 
 
