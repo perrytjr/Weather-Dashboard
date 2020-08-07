@@ -44,3 +44,6 @@ You are required to submit the following for review:
 
 - - -
 © 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
+https://www.w3schools.com/bootstrap4/bootstrap_utilities.asp bootstrap margin info credit link
+
+https://getbootstrap.com/docs/4.0/components/input-group/
