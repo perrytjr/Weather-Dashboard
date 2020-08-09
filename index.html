@@ -27,16 +27,17 @@
     <aside class="row">
       <div class="col-3 bg-light">
         <p class="city-search m-2"> Search for a city</p>
-        <div class="input-group mb-4">
+        <form class="input-group mb-4">
           <input type="text" id="city-name" class="form-control" placeholder="Enter city name"
             aria-label="Enter City Name">
-          <div class="input-group-append">
-            <button class="btn btn-primary" type="button" id="search-button">
+            <button class="btn btn-primary" type="submit" id="search-button">
               <i class="fas fa-search"></i>
             </button>
-            <form id="citylist"></form>
+          </form>
+          <div id="list-of-cities"></div>
           </div>
-        </div>
+          
+       
     </aside>
 
     <main class="today-weather col-9 pt-3">
@@ -47,17 +48,50 @@
             <p id="today-temp"></p>
             <p id="today-humidity"></p>
             <p id="today-wind-speed"></p>
-            <p id="uvindex"></p>
+            <p id="uv-index"></p>
             <img id="today-icon-div" src="">
           </div>
         </div>
       </div>
     </main>
 
-
-
-
-
+    <section class="five-day-section bg-light p-3 m-3 w-100">
+      <div class="bg-light">
+        <h5 class="text-light">5-Day Forecast</h5>
+      </div>
+      <div class="row justify-content-center">
+        <div id="day0" class="card-body mx-2 my-2">
+          <h5 id="0date"></h5>
+          <img id="0five-day-icon" src="">
+          <p id="0five-day-temp"></p>
+          <p id="0five-day-humidity"></p>
+        </div>
+        <div id="day1" class="card-body mx-2 my-2">
+          <h5 id="1date"></h5>
+          <img id="1five-day-icon" src="">
+          <p id="1five-day-temp"></p>
+          <p id="1five-day-humidity"></p>
+        </div>
+        <div id="day2" class="card-body mx-2 my-2">
+          <h5 id="2date"></h5>
+          <img id="2five-day-icon" src="">
+          <p id="2five-day-temp"></p>
+          <p id="2five-day-humidity"></p>
+        </div>
+        <div id="day3" class="card-body mx-2 my-2">
+          <h5 id="3date"></h5>
+          <img id="3five-day-icon" src="">
+          <p id="3five-day-temp"></p>
+          <p id="3five-day-humidity"></p>
+        </div>
+        <div id="day4" class="card-body mx-2 my-2">
+          <h5 id="4date"></h5>
+          <img id="4five-day-icon" src="">
+          <p id="4five-day-temp"></p>
+          <p id="4five-day-humidity"></p>
+        </div>
+      </div>
+    </section>
 
 
 
