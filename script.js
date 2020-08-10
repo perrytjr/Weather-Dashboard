@@ -4,33 +4,33 @@ let APIKey = "4f8564279b0a48b567bd6ba7e52a8a22";
 //let cityList = document.getElementById("list-of-cities");
 //empty array for cities
 let cities = [];
-let yourcity= "";
+let yourcity = "";
 searchCities();
 cityButton();
 saveCities();
 
-function getCities () {
+function getCities() {
     let cityStorage = JSON.parse(localStorage.getItem("cities"));
-    if (cityStorage === null || cityStorage === undefined){
+    if (cityStorage === null || cityStorage === undefined) {
         return;
     }
     makecitybuttons();
 }
 //localstorage for user city search
-function saveCities () {
+function saveCities() {
     localStorage.setItem("cities", JSON.stringify(cities));
-   
+
 }
 
- 
+
 function makecitybuttons() {
-    $("#list-of-cities").innerHTML ="";
-    if(cities === null){
+    $("#list-of-cities").innerHTML = "";
+    if (cities === null) {
         return;
     }
     $("#list-of-cities").empty();
-    let specificCities = [...new Set (cities)];
-    for (var i = 0; i < specificCities.length; i++){
+    let specificCities = [...new Set(cities)];
+    for (var i = 0; i < specificCities.length; i++) {
         let newcityName = specificCities[i];
 
         let buttonElement = document.createElement("button");
@@ -41,35 +41,50 @@ function makecitybuttons() {
     }
 }
 
-function cityButton () {
-    $("listbutton").on("click", function (event){
+function cityButton() {
+    $("listbutton").on("click", function (event) {
         event.preventDefault();
         cityList = $("#city-name").text();
     })
 }
 
-function searchCities(){
-    $("#search-button").on("click", function(event){
+function searchCities() {
+    $("#search-button").on("click", function (event) {
         console.log("#search-button");
         event.preventDefault();
         yourcity = $("#city-name").val();
         cities.push(yourcity);
 
         //we only want 5 cities saved so .shift will remove the first saved city allow for a new one to be displayed 
-        if(cities.length > 5) {
+        if (cities.length > 5) {
             cities.shift()
         }
         if (yourcity == "") {
-        return;
+            return;
         }
         saveCities();
         makecitybuttons();
+        getcurrentWeather();
     })
 }
 
 
 
+function getcurrentWeather() {
+   
 
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + yourcity + "&appid=" + APIKey;
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    })
+
+        .then(function(weather) {
+            console.log(queryURL);
+            console.log(weather);
+        })
+}
 
 
 
