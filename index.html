@@ -22,39 +22,43 @@
     </span>
   </nav>
 
-  <div class="container-fluid">
+  <div class="container flex">
 
-    <aside class="row">
+    <div class="row">
       <div class="col-3 bg-light">
         <p class="city-search m-2"> Search for a city</p>
         <form class="input-group mb-4">
           <input type="text" id="city-name" class="form-control" placeholder="Enter city name"
             aria-label="Enter City Name">
-            <button class="btn btn-primary" type="submit" id="search-button">
-              <i class="fas fa-search"></i>
-            </button>
-          </form>
-          <div id="list-of-cities"></div>
-          </div>
-          
-       
-    </aside>
-
-    <main class="today-weather col-9 pt-3">
-      <div class="bg-light p-3">
-        <h2 class="justify-content-center text-light" id="current-city-name"></h2>
-        <div class="row">
-          <div class="col-6">
-            <p id="today-temp"></p>
-            <p id="today-humidity"></p>
-            <p id="today-wind-speed"></p>
-            <p id="uv-index"></p>
-            <img id="today-icon-div" src="">
-          </div>
-        </div>
+          <button class="btn btn-primary" type="submit" id="search-button">
+            <i class="fas fa-search"></i>
+          </button>
+        </form>
+        
+         <div id="list-of-cities"> </div>
+      
       </div>
-    </main>
 
+      </div>
+
+     
+      <br>
+      <main class="row">
+        <div class="bg-light p-3 today-weather col-6 pt-3">
+
+          <div class="city-name"></div>
+          <div class="today-temp"></div>
+
+          <div class="today-humidity"></div>
+
+          <div class="today-wind-speed"></div>
+
+          <div class="uv-index"></div>
+
+          <img id="today-icon-div" src="">
+        </div>
+      </main>
+    </div>
     <section class="five-day-section bg-light p-3 m-3 w-100">
       <div class="bg-light">
         <h5 class="text-light">5-Day Forecast</h5>
