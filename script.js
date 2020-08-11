@@ -109,8 +109,24 @@ var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + yourcity
         method: "GET"
     })
 
-    .then(function (forcast){
+    .then(function (forecast){
         console.log(queryURL2);
-        console.log(forcast);
+        console.log(forecast);
+        var currentDate = moment();
+
+        for (var i = 6; i < forecast.list.length; i +=8) {
+
+            var dateForecast = $("<h5>");
+            var dailyPosition = (i + 2) / 8;
+
+            console.log("dateForecast" + "dailyPosition");
+
+            $('#date' + dailyPosition).empty();
+            $('#date' + dailyPosition).append(
+              dateForecast.text(currentDate.add(1, "days").format("M/D/YYYY"))
+            );
+
+           
+        }
     })
 }

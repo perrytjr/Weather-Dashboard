@@ -1,2 +1,13 @@
 
 
+#forecast-cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: center/space-between;
+    padding: 8;
+}
+
+.forecast {
+    padding: auto;
+    margin: 5px;
+}
