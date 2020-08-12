@@ -31,8 +31,8 @@
             <p class="city-search m-2"> Search for a city</p>
             <form class="form-inline">
               <div class="form-group">
-              <input type="text" id="city-name" class="form-control" placeholder="Enter city name"
-                aria-label="Enter City Name"></div>
+                <input type="text" id="city-name" class="form-control" placeholder="Enter city name"
+                  aria-label="Enter City Name"></div>
               <button class="btn btn-primary" type="submit" id="search-button">
                 <i class="fas fa-search"></i>
               </button>
@@ -46,7 +46,8 @@
       <main class="col-md-9">
         <div class=" card bg-light today-weather">
           <div class="card-body">
-            <div class="city-name"></div>
+            <div class="city-name"></div><img id="icon" src="" attr=""></img>
+
             <div class="today-temp"></div>
 
             <div class="today-humidity"></div>
@@ -58,7 +59,7 @@
           </div>
         </div>
 
-<br>
+        <br>
 
         <section class="row">
 
@@ -70,17 +71,16 @@
                 <div id="forecast1" class="card-body">
                   <span class="card-title" id='date1'>
                   </span>
-                  <span id='icon1'></span>
-                  <img id="today-icon-div" src="">
-                  <p id="temp1"></p>
-                  <p id="humidity1"></p>
+                  <img id="icon1" src="" attr=""></img>
+                  <p class="card-text" id="temp1"></p>
+                  <p class="card-text" id="humidity1"></p>
                 </div>
               </div>
               <div class="card forecast">
                 <div id="forecast2" class="card-body">
                   <span class="card-title" id='date2'>
                   </span>
-                  <div class='icon2'></div>
+                  <img id="icon2" src="" attr=""></img>
                   <p class="card-text" id="temp2"></p>
                   <p class="card-text" id="humidity2"></p>
                 </div>
@@ -89,7 +89,7 @@
                 <div id="forecast3" class="card-body">
                   <span class="card-title" id='date3'>
                   </span>
-                  <span id='icon3'></span>
+                  <img id="icon3" src="" attr=""></img>
                   <p class="card-text" id="temp3"></p>
                   <p class="card-text" id="humidity3"></p>
                 </div>
@@ -98,7 +98,7 @@
                 <div id="forecast4" class="card-body">
                   <span class="card-title" id='date4'>
                   </span>
-                  <span id='icon4'></span>
+                  <img id="icon4" src="" attr=""></img>
                   <p class="card-text" id="temp4"></p>
                   <p class="card-text" id="humidity4"></p>
                 </div>
@@ -107,7 +107,7 @@
                 <div id="forecast5" class="card-body">
                   <span class="card-title" id='date5'>
                   </span>
-                  <span id='icon5'></span>
+                  <img id="icon5" src="" attr=""></img>
                   <p class="card-text" id="temp5"></p>
                   <p class="card-text" id="humidity5"></p>
                 </div>

@@ -45,8 +45,8 @@ function cityButton() {
     $(".listbutton").on("click", function (event) {
         console.log(".listbutton")
         event.preventDefault();
-         city = $(this).text();
-       
+        //city = $(this).text();
+
         fivedayForcast();
         getcurrentWeather();
     })
@@ -75,7 +75,6 @@ function searchCities() {
 }
 
 
-
 function getcurrentWeather() {
 
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + yourcity + "&appid=" + APIKey + "&units=imperial";
@@ -89,14 +88,17 @@ function getcurrentWeather() {
             console.log(queryURL);
             console.log(response);
 
-            var currentDate = moment();
-
+            //var currentDate = moment();
+            var iconCode = response.weather[0].icon;
+            var iconURL = "http://openweathermap.org/img/w/" + iconCode + ".png";
+            console.log(response.weather[0].icon);
 
             $(".city-name").html("<h2>" + response.name + " " + moment().format("MM/DD/YYYY") + "</h2>");
-            $(".today-temp").html("<p>" + "Temperature " + response.main.temp +  " °F" + "</p>");
+            $("#icon").attr("src", iconURL);
+            $(".today-temp").html("<p>" + "Temperature " + response.main.temp + " °F" + "</p>");
             $(".today-humidity").html("<p>" + "Humidity: " + response.main.humidity + "%" + "</p>");
             $(".today-wind-speed").html("<p>" + "Wind Speed: " + response.wind.speed + "mph" + "</p>");
-             $(".uv-index").html("<p>" + "UV-Index: " + response.uvIndex + "</p>");
+            //$(".uv-index").html("<p>" + "UV-Index: " + response.uvIndex + "</p>");
 
 
         })
@@ -104,39 +106,41 @@ function getcurrentWeather() {
 
 function fivedayForcast() {
 
-var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + yourcity + "&appid=" + APIKey + "&units=imperial";
+    var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + yourcity + "&appid=" + APIKey + "&units=imperial";
 
     $.ajax({
         url: queryURL2,
         method: "GET"
     })
 
-    .then(function (forecast){
-        console.log(queryURL2);
-        console.log(forecast);
-        var currentDate = moment();
+        .then(function (forecast) {
+            console.log(queryURL2);
+            console.log(forecast);
+            var currentDate = moment();
+            
+            for (var i = 6; i < forecast.list.length; i += 8) {
+               
+                var dateForecast = $("<h5>");
+                var dailyPosition = (i + 2) / 8;
 
-        for (var i = 6; i < forecast.list.length; i +=8) {
+                //console.log("dateForecast" + "dailyPosition");
+                
+                $('#date' + dailyPosition).empty();
+                $('#date' + dailyPosition).append(
+                    dateForecast.text(currentDate.add(1, "days").format("M/D/YYYY"))
+                );
+                var iconCode = forecast.list[i].weather[0].icon;
+                var iconURL = "http://openweathermap.org/img/w/" + iconCode + ".png";
+                $("#icon" + dailyPosition).attr("src", iconURL);
+                console.log(forecast.list[i].weather[0].icon);
 
-            var dateForecast = $("<h5>");
-            var dailyPosition = (i + 2) / 8;
 
-            //console.log("dateForecast" + "dailyPosition");
-
-            $('#date' + dailyPosition).empty();
-            $('#date' + dailyPosition).append(
-              dateForecast.text(currentDate.add(1, "days").format("M/D/YYYY"))
-            );
-
-            console.log(forecast.list[i].weather[0].icon);
-
-            //$('.icon').html('<img>' + forecast.list[i].weather[0].icon + '<img>');
-                $("#temp" + dailyPosition).text( "Temp: " + forecast.list[i].main.temp + " °F");
+                $("#temp" + dailyPosition).text("Temp: " + forecast.list[i].main.temp + " °F");
 
                 $("#humidity" + dailyPosition).text("Humidity: " + forecast.list[i].main.humidity + "%");
-                
-                $(".forecast").attr("style","background-color:blue; color:white" );
-        }
 
-    })
+                $(".forecast").attr("style", "background-color:blue; color:white");
+            }
+
+        })
 }
