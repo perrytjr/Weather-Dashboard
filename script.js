@@ -45,8 +45,10 @@ function cityButton() {
     $(".listbutton").on("click", function (event) {
         console.log(".listbutton")
         event.preventDefault();
-        // cityList = $("#city-name").text();
-
+         city = $(this).text();
+       
+        fivedayForcast();
+        getcurrentWeather();
     })
 
 }
@@ -90,10 +92,10 @@ function getcurrentWeather() {
             var currentDate = moment();
 
 
-            $(".city-name").html("<h2>" + response.name + moment().format("MM/DD/YYYY") + "</h2>");
-            $(".today-temp").html("<p>" + "Temperature (F) " + response.main.temp + "</p>");
-            $(".today-humidity").html("<p>" + "Humidity: " + response.main.humidity + "</p>");
-            $(".today-wind-speed").html("<p>" + "Wind Speed: " + response.wind.speed + "</p>");
+            $(".city-name").html("<h2>" + response.name + " " + moment().format("MM/DD/YYYY") + "</h2>");
+            $(".today-temp").html("<p>" + "Temperature " + response.main.temp +  " °F" + "</p>");
+            $(".today-humidity").html("<p>" + "Humidity: " + response.main.humidity + "%" + "</p>");
+            $(".today-wind-speed").html("<p>" + "Wind Speed: " + response.wind.speed + "mph" + "</p>");
              $(".uv-index").html("<p>" + "UV-Index: " + response.uvIndex + "</p>");
 
 
@@ -119,14 +121,22 @@ var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + yourcity
             var dateForecast = $("<h5>");
             var dailyPosition = (i + 2) / 8;
 
-            console.log("dateForecast" + "dailyPosition");
+            //console.log("dateForecast" + "dailyPosition");
 
             $('#date' + dailyPosition).empty();
             $('#date' + dailyPosition).append(
               dateForecast.text(currentDate.add(1, "days").format("M/D/YYYY"))
             );
 
-           
+            console.log(forecast.list[i].weather[0].icon);
+
+            //$('.icon').html('<img>' + forecast.list[i].weather[0].icon + '<img>');
+                $("#temp" + dailyPosition).text( "Temp: " + forecast.list[i].main.temp + " °F");
+
+                $("#humidity" + dailyPosition).text("Humidity: " + forecast.list[i].main.humidity + "%");
+                
+                $(".forecast").attr("style","background-color:blue; color:white" );
         }
+
     })
 }
