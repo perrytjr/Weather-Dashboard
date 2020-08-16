@@ -45,10 +45,10 @@ function cityButton() {
     $(".listbutton").on("click", function (event) {
         console.log(".listbutton")
         event.preventDefault();
-        //city = $(this).text();
-
-        fivedayForcast();
+        yourcity = $(this).text().trim();
         getcurrentWeather();
+        fivedayForcast();
+        
     })
 
 }
@@ -58,6 +58,7 @@ function searchCities() {
         console.log("#search-button");
         event.preventDefault();
         yourcity = $("#city-name").val();
+        console.log("#city-name");
         cities.push(yourcity);
 
         //we only want 5 cities saved so .shift will remove the first saved city allow for a new one to be displayed 
