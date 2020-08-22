@@ -24,6 +24,8 @@ https://perrytjr.github.io/Weather-Dashboard/index.html
 
 ![weather dashboard demo](./Assets/06-server-side-apis-homework-demo.png)
 
+![](https://github.com/perrytjr/Weather-Dashboard/blob/master/Assets/Screen%20Shot%202020-08-22%20at%209.55.08%20AM.png)
+
 ## Credits
 
 * [OpenWeather API](https://openweathermap.org/api)
