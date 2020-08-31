@@ -72,6 +72,7 @@ function searchCities() {
         makecitybuttons();
         getcurrentWeather();
         fivedayForcast();
+        
     })
 }
 
@@ -100,10 +101,36 @@ function getcurrentWeather() {
             $(".today-humidity").html("<p>" + "Humidity: " + response.main.humidity + "%" + "</p>");
             $(".today-wind-speed").html("<p>" + "Wind Speed: " + response.wind.speed + "mph" + "</p>");
             //$(".uv-index").html("<p>" + "UV-Index: " + response.uvIndex + "</p>");
-
-
+            var lat = response.coord.lat;
+            var long = response.coord.lon;
+            uvIndex(lat, long);
         })
+
+        
 }
+
+
+function  uvIndex(lat, long) {
+    var coordURL = 'https://api.openweathermap.org/data/2.5/uvi?lat=' + lat + '&lon=' + long + '&appid=' + APIKey;
+        $.ajax({
+            url: coordURL,
+            method: 'GET'
+        }).then(function(response) {
+            var uv = parseFloat(response.value);
+            $('.uv-index').removeClass('moderate high extreme');
+            if (uv < 6) {
+                $('.uv-index').addClass('low');
+            } else if (uv < 10) {
+                $('.uv-index').addClass('high');
+            } else {
+                $('.uv-index').addClass('dangerous');
+            }
+            $('.uv-index').empty();
+            $('.uv-index').append('UV Index: ' + response.value);
+        })
+
+}
+
 
 function fivedayForcast() {
 
